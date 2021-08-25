@@ -3,7 +3,7 @@ const request = indexedDB.open('budget', 1);
 
 request.onupgradeneeded = function(event) {
    const db = event.target.result;
-   db.createObjectStore('new_budget', 
+   db.createObjectStore('new_transcation', 
     { autoIncrement: true }
   );
 };
@@ -24,17 +24,17 @@ request.onerror = function(event) {
 };
 
 function saveRecord(record) {
-  const transaction = db.transaction(['new_budget'], 'readwrite');
-  const budgetbjectStore = transaction.objectStore('new_budget');
+  const transaction = db.transaction(['new_transcation'], 'readwrite');
+  const budgetbjectStore = transaction.objectStore('new_transcation');
   // add record to your store with add method.
   budgetObjectStore.add(record);
 }
 
 function uploadBudget() {
   // open a transaction on your pending db
-  const transaction = db.transaction(['new_budget'], 'readwrite');
+  const transaction = db.transaction(['new_transcation'], 'readwrite');
   // access your pending object store
-  const budgetObjectStore = transaction.objectStore('new_budget');
+  const budgetObjectStore = transaction.objectStore('new_transcation');
   // get all records from store and set to a variable
   const getAll = budgetObjectStore.getAll();
 
@@ -55,8 +55,8 @@ function uploadBudget() {
           throw new Error(serverResponse);
         }
       
-        const transaction = db.transaction(['new_budget'], 'readwrite');
-        const budgetObjectStore = transaction.objectStore('new_budget');
+        const transaction = db.transaction(['new_transcation'], 'readwrite');
+        const budgetObjectStore = transaction.objectStore('new_transcation');
         // clear all items in your store
         budgetObjectStore.clear();
       })    
