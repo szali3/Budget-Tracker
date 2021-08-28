@@ -17,7 +17,7 @@ npm start
 
 ## Tools used
 
-Node, Express, dotenv, NoSQL, mongoose, Service-worker, compression, morgan and IndexedDB.
+Node, Express, NoSQL, mongoose, Service-worker, compression, morgan and IndexedDB.
 
 ## Contributors
 

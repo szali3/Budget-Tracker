@@ -25,7 +25,7 @@ request.onerror = function(event) {
 
 function saveRecord(record) {
   const transaction = db.transaction(['new_transcation'], 'readwrite');
-  const budgetbjectStore = transaction.objectStore('new_transcation');
+  const budgetObjectStore = transaction.objectStore('new_transcation');
   // add record to your store with add method.
   budgetObjectStore.add(record);
 }
@@ -69,5 +69,5 @@ function uploadBudget() {
 }
 
 // listen for app coming back 
-onlinewindow.addEventListener('online', uploadBudget);
+window.addEventListener('online', uploadBudget);
 
