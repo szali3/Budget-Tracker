@@ -20,7 +20,6 @@ request.onsuccess = function(event) {
 request.onerror = function(event) {
   // log error here
   console.log(event.target.errorCode);
-
 };
 
 function saveRecord(record) {
