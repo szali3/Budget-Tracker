@@ -10,31 +10,15 @@ const FILES_TO_CACHE = [
   './js/index.js',
   './manifest.json',
   './css/style.css',
-  './icons/icon-72x72.png',
-  './icons/icon-96x96.png',
-  './icons/icon-128x128.png',
-  './icons/icon-144x144.png',
-  './icons/icon-152x152.png',
-  './icons/icon-192x192.png',
-  './icons/icon-384x384.png',
-  './icons/icon-512x512.png'
+  '/icons/icon-72x72.png',
+  '/icons/icon-96x96.png',
+  '/icons/icon-128x128.png',
+  '/icons/icon-144x144.png',
+  '/icons/icon-152x152.png',
+  '/icons/icon-192x192.png',
+  '/icons/icon-384x384.png',
+  '/icons/icon-512x512.png'
 ];
-
-// listening to itself for fetch then call function that checks if cache already present 
-self.addEventListener("fetch", function (e) {
-  console.log("fetch request : " + e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(function (request) {
-      if (request) { // if request true return cache and not fetch
-        console.log("responding with cache : " + e.request.url);
-        return request;
-      } else { // if request false then return fetch as there is no cache
-        console.log("file is not cached, fetching : " + e.request.url);
-        return fetch(e.request);
-      }
-    })
-  );
-});
 
 // listening to itself for install then cachses all the hml and js files listed
 self.addEventListener("install", function (e) {
@@ -45,6 +29,7 @@ self.addEventListener("install", function (e) {
     })
   );
 });
+
 
 // delete outdated cahce
 self.addEventListener("activate", function (e) {
@@ -62,6 +47,22 @@ self.addEventListener("activate", function (e) {
           }
         })
       );
+    })
+  );
+});
+
+// listening to itself for fetch then call function that checks if cache already present 
+self.addEventListener("fetch", function (e) {
+  console.log("fetch request : " + e.request.url);
+  e.respondWith(
+    caches.match(e.request).then(function (request) {
+      if (request) { // if request true return cache and not fetch
+        console.log("responding with cache : " + e.request.url);
+        return request;
+      } else { // if request false then return fetch as there is no cache
+        console.log("file is not cached, fetching : " + e.request.url);
+        return fetch(e.request);
+      }
     })
   );
 });
