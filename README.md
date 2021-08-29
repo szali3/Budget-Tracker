@@ -1,6 +1,6 @@
 # Budget-Tracker
 
-![Screenshot](budget-tracker.png)
+![Screenshot](budget-tracker.PNG)
 
 ## Summary  
 
